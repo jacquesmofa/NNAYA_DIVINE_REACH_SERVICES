@@ -1,0 +1,10 @@
+# Nnaya Divine Reach Services — robots.txt
+# CONTENT: confirm the domain with the client before launch.
+
+User-agent: *
+Allow: /
+
+# No private, admin or test paths exist at this time.
+# Add a Disallow line here only when such a path is created.
+
+Sitemap: https://www.ndrs.ca/sitemap.xml
