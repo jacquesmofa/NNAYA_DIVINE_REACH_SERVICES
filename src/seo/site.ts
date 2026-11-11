@@ -6,7 +6,7 @@
  * - No email, telephone, address or social accounts are declared because none have
  *   been supplied by NDRS. Add them here only once they are confirmed.
  */
-export const SITE_URL = 'https://www.ndrs.ca';
+export const SITE_URL = 'https://nnayadivinereachservices.com';
 
 export const SITE_NAME = 'Nnaya Divine Reach Services';
 export const SHORT_NAME = 'NDRS';

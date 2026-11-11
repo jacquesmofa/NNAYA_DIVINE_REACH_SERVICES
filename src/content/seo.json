@@ -2,9 +2,9 @@
   "_help": "Share previews (Facebook, WhatsApp, LinkedIn, X...) and the sitemap, used by scripts/social-pages.mjs at every build. Keep in step with src/seo/site.ts. Add a page here when its route is published.",
   "site": {
     "name": "Nnaya Divine Reach Services",
-    "url": "https://www.ndrs.ca",
+    "url": "https://nnayadivinereachservices.com",
     "locale": "en_CA",
-    "image": "https://www.ndrs.ca/social/home.jpg",
+    "image": "https://nnayadivinereachservices.com/social/home.jpg",
     "imageAlt": "Nnaya Divine Reach Services: supporting growth, inspiring change. Food, skills, wellness and Igbo cultural programs in Brampton."
   },
   "pages": [

@@ -7,4 +7,4 @@ Allow: /
 # No private, admin or test paths exist at this time.
 # Add a Disallow line here only when such a path is created.
 
-Sitemap: https://www.ndrs.ca/sitemap.xml
+Sitemap: https://nnayadivinereachservices.com/sitemap.xml

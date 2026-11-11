@@ -3,11 +3,11 @@ name: 🚀 Build and Deploy — Nnaya Divine Reach Services (NDRS)
 # How it works (plain words):
 # - Every change pushed to main is built. If the build fails, nothing is uploaded.
 # - The finished site (folder out/) is uploaded to HostGator by FTPS, then the workflow
-#   opens https://www.ndrs.ca and checks the new version is really there.
+#   opens https://nnayadivinereachservices.com and checks the new version is really there.
 # - "Run workflow" (Actions tab) re-publishes by hand.
 # Settings (GitHub > Settings > Secrets and variables > Actions):
 #   Secrets   FTP_SERVER = gator3095.hostgator.com (host only), FTP_USERNAME, FTP_PASSWORD
-#   Variables (optional) SITE_URL (default https://www.ndrs.ca),
+#   Variables (optional) SITE_URL (default https://nnayadivinereachservices.com),
 #             FTP_SERVER_DIR (folder on the server; found automatically when not set),
 #             FTP_PROTOCOL = ftp only if ftps ever fails.
 
@@ -22,8 +22,8 @@ concurrency:
   cancel-in-progress: false # queue back-to-back saves instead of cutting an upload short
 
 env:
-  SITE_URL: ${{ vars.SITE_URL || 'https://www.ndrs.ca' }}
-  SITE_FOLDER: ndrs.ca # the domain's folder in cPanel (used only when the FTP account opens at the top of the hosting account)
+  SITE_URL: ${{ vars.SITE_URL || 'https://nnayadivinereachservices.com' }}
+  SITE_FOLDER: nnayadivinereachservices.com # the domain's folder in cPanel (used only when the FTP account opens at the top of the hosting account)
 
 jobs:
   build-and-deploy:

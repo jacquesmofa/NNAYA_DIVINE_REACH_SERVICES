@@ -2,7 +2,7 @@
 
 Brampton not-for-profit supporting youth, seniors, families and newcomers with food, skills, wellness and Igbo cultural programs.
 
-- Live domain: ndrs.ca (found in code; confirm)
+- Live domain: https://nnayadivinereachservices.com (HostGator; FTP account confirmed 11 Nov 2026). The old code said ndrs.ca.
 - Host: HostGator via GitHub Actions FTP deploy (since 11 Nov 2026).
 - Design and audience: see `brand-dna.md`. Placeholders: `PLACEHOLDERS.md` (create it when you find one).
 
@@ -22,7 +22,7 @@ Brampton not-for-profit supporting youth, seniors, families and newcomers with f
 - Routes: `/`, `/404`, `/about`, `/accessibility`, `/contact`, `/donate`, `/get-support`, `/igbo-roots`, `/impact`, `/news`, `/partner`, `/privacy`, `/programs`, `/volunteer`.
 
 ## Deploy
-- `.github/workflows/deploy.yml` (studio standard): push to `main` → `npm ci && npm run build` → FTPS upload of `out/` → live check of `SITE_URL` (default https://www.ndrs.ca) and every sitemap address.
+- `.github/workflows/deploy.yml` (studio standard): push to `main` → `npm ci && npm run build` → FTPS upload of `out/` → live check of `SITE_URL` (default https://nnayadivinereachservices.com) and every sitemap address.
 - Secrets `FTP_SERVER` (= gator3095.hostgator.com), `FTP_USERNAME`, `FTP_PASSWORD`. The workflow finds the site folder itself. Optional variables: `SITE_URL`, `FTP_SERVER_DIR`, `FTP_PROTOCOL`.
 - `public/.htaccess`: https, clean addresses, share-preview pages, SPA fallback, caching.
 
