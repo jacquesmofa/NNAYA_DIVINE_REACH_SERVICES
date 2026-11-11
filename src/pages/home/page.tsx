@@ -5,6 +5,7 @@ import { HOME_META } from '@/seo/site';
 import SiteNav from './components/SiteNav';
 import FilmChapter from './components/FilmChapter';
 import Panels from './components/Panels';
+import FoodSecurity from './components/FoodSecurity';
 import ContactPanel from './components/ContactPanel';
 import SiteFooter from './components/SiteFooter';
 
@@ -19,6 +20,7 @@ export default function Home() {
       <main id="main">
         <FilmChapter />
         <Panels />
+        <FoodSecurity />
         <ContactPanel />
       </main>
       <SiteFooter />

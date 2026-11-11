@@ -37,8 +37,8 @@ export default function Panels() {
 
       {/* 04 — Food, skills and opportunity */}
       <section className="panel" data-side="left" id="care">
-        <img className="panel-bg" data-parallax="0.32" alt="Volunteers serving a warm community lunch at long tables" width={2400} height={1350} loading="lazy" decoding="async"
-          src="https://readdy.ai/api/search-image?query=Community%20hot%20lunch%20in%20a%20warm%20church%20hall%2C%20diverse%20volunteers%20serving%20food%20to%20families%20at%20long%20tables%2C%20main%20subject%20in%20the%20right%20third%20of%20the%20frame%2C%20the%20left%20half%20calm%20and%20dark%20soft%20wall%2C%20amber%20light%2C%20deep%20brown%20and%20terracotta%20grade%2C%20cinematic%20wide%20shot&width=2400&height=1350&seq=ndrs-food-01&orientation=landscape" />
+        <img className="panel-bg" data-parallax="0.32" alt="Crates of fresh produce collected for the NDRS food drive" width={2400} height={1350} loading="lazy" decoding="async"
+          src="https://res.cloudinary.com/hxhakwbe/image/upload/f_auto,q_auto,c_fill,g_auto,w_2400,h_1350/v1794348731/WhatsApp_Image_2026-11-08_at_19.01.58_2_omap8j.jpg" />
         <div className="panel-veil" />
         <span className="panel-accent" aria-hidden="true" data-parallax="0.55" style={{ right: '8vw', bottom: '10vh' }}>04</span>
         <div className="panel-copy" data-parallax="-0.08">
@@ -53,8 +53,8 @@ export default function Panels() {
 
       {/* 05 — Igbo Roots & Generations */}
       <section className="panel" data-side="bottom" id="igbo-roots">
-        <img className="panel-bg" data-parallax="0.32" alt="An elder telling stories to children seated on woven mats in warm evening light" width={2400} height={1350} loading="lazy" decoding="async"
-          src="https://readdy.ai/api/search-image?query=Nigerian%20Igbo%20elder%20in%20traditional%20red%20cap%20telling%20stories%20to%20children%20seated%20on%20woven%20mats%2C%20subject%20in%20the%20upper%20half%20of%20the%20frame%2C%20lower%20third%20empty%20dark%20earth%20floor%20in%20shadow%2C%20warm%20terracotta%20glow%2C%20cinematic%20wide%20shot&width=2400&height=1350&seq=ndrs-igbo-01&orientation=landscape" />
+        <img className="panel-bg" data-parallax="0.32" alt="Community members in traditional Igbo attire at an NDRS cultural celebration" width={2400} height={1350} loading="lazy" decoding="async"
+          src="https://res.cloudinary.com/hxhakwbe/image/upload/f_auto,q_auto,c_fill,g_auto,w_2400,h_1350/v1793799588/WhatsApp_Image_2026-11-04_at_00.28.52_yyo1sr.jpg" />
         <div className="panel-veil" />
         <div className="panel-copy" data-parallax="-0.08">
           <p className="stamp" data-reveal>05 — An NDRS signature initiative · Proposed</p>
