@@ -1,7 +1,8 @@
 # Nnaya Divine Reach Services — HostGator (Apache) settings for the React site.
 
 DirectoryIndex index.html
-Options -Indexes
+Options -Indexes -MultiViews
+AddType application/manifest+json .webmanifest
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
