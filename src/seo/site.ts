@@ -16,16 +16,14 @@ export const TAGLINE = 'Supporting Growth, Inspiring Change.';
 export const BRAND_COLOR = '#2e1b18';
 export const BACKGROUND_COLOR = '#fbf7f0';
 
-/** Square, text-free brand mark used for share previews and app icons. */
-export const BRAND_ICON =
-  'https://readdy.ai/api/search-image?query=Flat%20minimal%20app%20icon%2C%20solid%20deep%20chocolate%20brown%20square%20background%2C%20a%20simple%20bold%20burnt%20orange%20rising%20sun%20circle%20above%20two%20cream%20curved%20open%20hands%20forming%20a%20reach%2C%20centered%20composition%20with%20generous%20empty%20margin%2C%20crisp%20clean%20vector%20edges%2C%20no%20text%2C%20no%20letters%2C%20no%20gradient%2C%20high%20contrast&width=512&height=512&seq=ndrs-app-icon-01&orientation=squarish';
+/** Square brand mark (rising sun over open hands), public/icon-512.png. */
+export const BRAND_ICON = `${SITE_URL}/icon-512.png`;
 
-/** 1200 x 630 Open Graph / Twitter share card for the home page. */
-export const OG_HOME_IMAGE =
-  'https://readdy.ai/api/search-image?query=Warm%20cinematic%20editorial%20photograph%20of%20a%20multigenerational%20Black%20family%2C%20grandmother%2C%20parents%20and%20children%20laughing%20together%20in%20golden%20late%20afternoon%20light%20on%20a%20Brampton%20porch%2C%20deep%20brown%20and%20terracotta%20tones%2C%20soft%20shadows%2C%20calm%20darker%20right%20third%20of%20the%20frame%20kept%20free%20for%20a%20title&width=1200&height=630&seq=ndrs-og-home-01&orientation=landscape';
+/** 1200 x 630 share card for the home page, public/social/home.jpg (brand colours + tagline). */
+export const OG_HOME_IMAGE = `${SITE_URL}/social/home.jpg`;
 
 export const OG_HOME_ALT =
-  'A multigenerational Black family laughing together in golden light on a Brampton porch';
+  'Nnaya Divine Reach Services: supporting growth, inspiring change. Food, skills, wellness and Igbo cultural programs in Brampton.';
 
 export const ROBOTS_INDEX =
   'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';

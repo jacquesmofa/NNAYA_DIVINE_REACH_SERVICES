@@ -1,0 +1,23 @@
+{
+  "_help": "Share previews (Facebook, WhatsApp, LinkedIn, X...) and the sitemap, used by scripts/social-pages.mjs at every build. Keep in step with src/seo/site.ts. Add a page here when its route is published.",
+  "site": {
+    "name": "Nnaya Divine Reach Services",
+    "url": "https://www.ndrs.ca",
+    "locale": "en_CA",
+    "image": "https://www.ndrs.ca/social/home.jpg",
+    "imageAlt": "Nnaya Divine Reach Services: supporting growth, inspiring change. Food, skills, wellness and Igbo cultural programs in Brampton."
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Nnaya Divine Reach Services | Brampton Community Support",
+      "description": "A Brampton not-for-profit supporting youth, seniors, families and newcomers with food, skills, wellness and Igbo cultural programs. Explore how we can help."
+    },
+    {
+      "path": "/404",
+      "title": "Page Not Found | Nnaya Divine Reach Services",
+      "description": "This page could not be found. Return to the Nnaya Divine Reach Services home page to explore our community programs, support services and ways to get involved.",
+      "noindex": true
+    }
+  ]
+}

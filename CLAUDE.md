@@ -3,7 +3,7 @@
 Brampton not-for-profit supporting youth, seniors, families and newcomers with food, skills, wellness and Igbo cultural programs.
 
 - Live domain: ndrs.ca (found in code; confirm)
-- Host: ❓ not set up (no deploy workflow; `vercel.json` present)
+- Host: HostGator via GitHub Actions FTP deploy (since 11 Nov 2026).
 - Design and audience: see `brand-dna.md`. Placeholders: `PLACEHOLDERS.md` (create it when you find one).
 
 ## Studio rules (Jacques' web studio: apply to every task)
@@ -22,7 +22,13 @@ Brampton not-for-profit supporting youth, seniors, families and newcomers with f
 - Routes: `/`, `/404`, `/about`, `/accessibility`, `/contact`, `/donate`, `/get-support`, `/igbo-roots`, `/impact`, `/news`, `/partner`, `/privacy`, `/programs`, `/volunteer`.
 
 ## Deploy
-- No deploy workflow yet. Add the studio FTP workflow (copy `jacquesmofa/SANKOFA/.github/workflows/deploy.yml`) once the client's host is known.
+- `.github/workflows/deploy.yml` (studio standard): push to `main` → `npm ci && npm run build` → FTPS upload of `out/` → live check of `SITE_URL` (default https://www.ndrs.ca) and every sitemap address.
+- Secrets `FTP_SERVER` (= gator3095.hostgator.com), `FTP_USERNAME`, `FTP_PASSWORD`. The workflow finds the site folder itself. Optional variables: `SITE_URL`, `FTP_SERVER_DIR`, `FTP_PROTOCOL`.
+- `public/.htaccess`: https, clean addresses, share-preview pages, SPA fallback, caching.
+
+## Share previews and SEO
+- `src/content/seo.json` → `scripts/social-pages.mjs` (inside `npm run build`): one HTML file per published page with its own title, description, canonical and 1200×630 picture, plus `sitemap.xml`. Social apps never run JavaScript, so this is what they show. In the browser, `src/seo/site.ts` sets the same tags: keep both in step, and change the domain in both if it changes.
+- Share card `public/social/home.jpg` (brand colours + tagline) and app icons `public/icon-*.png` replace the Readdy placeholders. The photos in `Images/` are NOT used for sharing: several carry third-party watermarks or look AI-generated.
 
 ## Where things live
 - Pages: `src/pages/<page>/` (one folder per page, sections in `components/`). Routes: `src/router/`.
