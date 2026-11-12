@@ -22,8 +22,8 @@ export const ADDRESS_ONE_LINE = ADDRESS_LINES.join(', ');
 export const MAP_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS_ONE_LINE)}`;
 
 /**
- * Web3Forms access key for nnayadivinereachservices@gmail.com (free: web3forms.com → enter
- * the email → the key arrives in that inbox). While it is empty, the contact form opens the
- * visitor's email app with the message ready to send, so no message is ever lost.
+ * Web3Forms access key for nnayadivinereachservices@gmail.com (public by design, safe in the
+ * code; created 12 Nov 2026). To replace it: web3forms.com → enter that email → the new key
+ * arrives in the inbox. If it is ever emptied, the form opens the visitor's email app instead.
  */
-export const WEB3FORMS_KEY = '';
+export const WEB3FORMS_KEY = 'a34ee435-7dce-4ef6-8cfb-b988a8039d46';

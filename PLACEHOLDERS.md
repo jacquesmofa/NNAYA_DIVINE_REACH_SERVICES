@@ -10,6 +10,6 @@
 
 ## Contact details (11 Nov 2026, from the client)
 - [x] Email nnayadivinereachservices@gmail.com, phones (647) 657-8716 and 0803 061 5142 (Nigeria), address 101 West Drive, Unit 7, Brampton, ON L6T 2J6: in `src/lib/contact.ts`, used in the contact section, footer, phone menu, donate section and Google structured data.
-- [ ] Web3Forms key for nnayadivinereachservices@gmail.com: paste it into `WEB3FORMS_KEY` in `src/lib/contact.ts`. Until then the contact form opens the visitor's email app with the message ready (no more Readdy form service).
+- [x] Web3Forms key for nnayadivinereachservices@gmail.com added 12 Nov 2026 (`WEB3FORMS_KEY` in `src/lib/contact.ts`): the contact form sends straight to that inbox.
 - [ ] Office hours, social media links, registered charity number and tax-receipt details: removed from view until confirmed (they showed as "[to be added]").
 - [ ] Online donation link: the Donate button opens an email to NDRS until a donation page exists.
