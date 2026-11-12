@@ -21,7 +21,7 @@ export default function SiteNav() {
   }, [open]);
   return (
     <>
-    <header className="nav">
+    <header className="nav" style={open ? { background: 'var(--bg)', backdropFilter: 'none' } : undefined}>
       <nav aria-label="Main" className="flex items-center justify-between px-4 md:px-10 h-16 md:h-20">
         <a href="#overview" data-progress="0" onClick={() => setOpen(false)} className="flex items-center gap-3 cursor-pointer" aria-label="NDRS home">
           <span className="w-9 h-9 rounded-full flex items-center justify-center" style={{ border: '1px solid var(--accent)' }}>
