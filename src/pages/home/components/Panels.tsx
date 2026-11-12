@@ -1,3 +1,4 @@
+import { CONTACT } from '../../../lib/contact';
 const html = (s: string) => ({ __html: s });
 
 const generations = [
@@ -79,12 +80,11 @@ export default function Panels() {
           <div className="flex flex-wrap gap-3" data-reveal>
             <a className="btn btn-ghost" href="#contact">Volunteer</a>
             <a className="btn btn-ghost" href="#contact">Partner With Us</a>
-            {/* TODO: connect secure donation link */}
-            <a className="btn btn-accent" href="#donate" id="donate">Donate <i className="ri-arrow-right-line" /></a>
+            {/* No online donation page yet: the button opens an email to NDRS about giving. */}
+            <a className="btn btn-accent" href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('I would like to donate')}`} id="donate">Donate <i className="ri-arrow-right-line" /></a>
           </div>
-          <p className="text-xs" style={{ color: 'var(--muted)' }} data-reveal>
-            {/* CONTENT: confirm with client before launch */}
-            [Tax-receipt information: to be confirmed]
+          <p className="text-sm" style={{ color: 'var(--muted)' }} data-reveal>
+            To give or ask about donations, call <a className="underline" href={CONTACT.phones[0].href}>{CONTACT.phones[0].label}</a> or email <a className="underline break-all" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
           </p>
         </div>
       </section>

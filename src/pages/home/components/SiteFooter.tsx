@@ -1,3 +1,5 @@
+import { ADDRESS_LINES, CONTACT, MAP_URL } from '../../../lib/contact';
+
 export default function SiteFooter() {
   return (
     <footer className="px-4 md:px-[8vw] pt-20 pb-10" style={{ background: 'color-mix(in srgb, var(--bg) 70%, black)', borderTop: '1px solid color-mix(in srgb, var(--accent) 30%, transparent)' }}>
@@ -19,9 +21,12 @@ export default function SiteFooter() {
         </div>
         <div data-reveal>
           <h4 className="font-semibold mb-3">Contact</h4>
-          {/* CONTENT: confirm with client before launch */}
           <ul className="flex flex-col gap-2" style={{ color: 'var(--muted)' }}>
-            <li>Brampton, Ontario</li><li>[Telephone: to be added]</li><li>[Email: to be added]</li><li>[Social media: approved links]</li>
+            <li><a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="nav-link">{ADDRESS_LINES[0]}<br />{ADDRESS_LINES[1]}</a></li>
+            {CONTACT.phones.map((p) => (
+              <li key={p.href}><a href={p.href} className="nav-link">{p.label}{p.note ? ` (${p.note})` : ''}</a></li>
+            ))}
+            <li><a href={`mailto:${CONTACT.email}`} className="nav-link break-all">{CONTACT.email}</a></li>
           </ul>
         </div>
         <div data-reveal>
@@ -33,8 +38,8 @@ export default function SiteFooter() {
         </div>
       </div>
       <div className="mt-14 pt-6 flex flex-col sm:flex-row justify-between gap-2 text-xs" style={{ color: 'var(--muted)', borderTop: '1px solid color-mix(in srgb, var(--text) 10%, transparent)' }}>
-        <span>© Nnaya Divine Reach Services. All rights reserved.</span>
-        <span>[Registered charity number: to be added if applicable]</span>
+        <span>© {new Date().getFullYear()} Nnaya Divine Reach Services. All rights reserved.</span>
+        <span>{ADDRESS_LINES.join(', ')}</span>
       </div>
     </footer>
   );

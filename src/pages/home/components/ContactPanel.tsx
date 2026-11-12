@@ -1,9 +1,9 @@
 import { useState, type FormEvent } from 'react';
 
-const SUBMIT_URL = 'https://readdy.ai/api/form/dbli8gmbe8r9umpno26g';
+import { ADDRESS_LINES, CONTACT, MAP_URL, WEB3FORMS_KEY } from '../../../lib/contact';
 
 export default function ContactPanel() {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'mailapp' | 'error'>('idle');
   const [formError, setFormError] = useState('');
   const [count, setCount] = useState(0);
 
@@ -15,24 +15,42 @@ export default function ContactPanel() {
     fd.delete('website_alt');
     const message = String(fd.get('message') || '');
     if (message.length > 500) { setFormError('Please keep your message under 500 characters.'); setStatus('error'); return; }
+    const reason = String(fd.get('reason') || 'Message');
+    const subject = `Website message: ${reason}`;
+
+    // No Web3Forms key yet: open the visitor's email app with the message ready to send.
+    if (!WEB3FORMS_KEY) {
+      const body = [
+        message,
+        '',
+        `Name: ${fd.get('name') || ''}`,
+        `Email: ${fd.get('email') || ''}`,
+        fd.get('phone') ? `Phone: ${fd.get('phone')}` : '',
+        `Reason: ${reason}`,
+      ].filter((l) => l !== '').join('\n');
+      window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setStatus('mailapp');
+      return;
+    }
+
     setStatus('loading'); setFormError('');
     const params = new URLSearchParams();
+    params.append('access_key', WEB3FORMS_KEY);
+    params.append('subject', subject);
+    params.append('from_name', 'NDRS website');
+    params.append('replyto', String(fd.get('email') || ''));
     fd.forEach((v, k) => params.append(k, String(v)));
     try {
-      const response = await fetch(SUBMIT_URL, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() });
-      const responseText = await response.text();
-      let parsed: any = null;
-      try { parsed = JSON.parse(responseText); } catch { parsed = null; }
-      const serverMsg = parsed?.meta?.message || parsed?.message || parsed?.meta?.detail || responseText;
-      const spam = /spam/i.test(String(serverMsg));
-      if (response.ok && parsed?.code === 'OK' && !spam) {
+      const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' }, body: params.toString() });
+      const parsed = await response.json().catch(() => null);
+      if (response.ok && parsed?.success) {
         setStatus('success'); form.reset(); setCount(0);
       } else {
-        setFormError(serverMsg ? String(serverMsg) : 'Something went wrong. Please try again.');
+        setFormError(parsed?.message ? String(parsed.message) : 'Something went wrong.');
         setStatus('error');
       }
     } catch {
-      setFormError('We could not send your message. Please check your connection and try again.');
+      setFormError('We could not send your message. Please check your connection.');
       setStatus('error');
     }
   };
@@ -47,23 +65,39 @@ export default function ContactPanel() {
           <p className="stamp" data-reveal>07 — Contact &amp; get support</p>
           <h2 data-reveal dangerouslySetInnerHTML={{ __html: 'We would love to<br>hear from <em class="accent">you.</em>' }} />
           <p className="sub" data-reveal>Whether you need support, want to volunteer, or are interested in a partnership, please reach out.</p>
-          {/* CONTENT: confirm with client before launch */}
-          <ul className="text-sm flex flex-col gap-2" style={{ color: 'var(--muted)' }} data-reveal>
-            <li><i className="ri-map-pin-line mr-2" />Brampton, Ontario, and surrounding communities [confirm coverage]</li>
-            <li><i className="ri-phone-line mr-2" />[Telephone: to be added]</li>
-            <li><i className="ri-mail-line mr-2" />[Email: to be added]</li>
-            <li><i className="ri-time-line mr-2" />[Office hours: to be added]</li>
+          <ul className="text-base flex flex-col gap-3" data-reveal>
+            <li className="flex gap-3">
+              <i className="ri-map-pin-line text-lg" style={{ color: 'var(--accent)' }} aria-hidden="true" />
+              <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="hover:underline">{ADDRESS_LINES[0]}<br />{ADDRESS_LINES[1]}</a>
+            </li>
+            {CONTACT.phones.map((p) => (
+              <li key={p.href} className="flex gap-3">
+                <i className="ri-phone-line text-lg" style={{ color: 'var(--accent)' }} aria-hidden="true" />
+                <a href={p.href} className="hover:underline">{p.label}{p.note && <span style={{ color: 'var(--muted)' }}> ({p.note})</span>}</a>
+              </li>
+            ))}
+            <li className="flex gap-3">
+              <i className="ri-mail-line text-lg" style={{ color: 'var(--accent)' }} aria-hidden="true" />
+              <a href={`mailto:${CONTACT.email}`} className="hover:underline break-all">{CONTACT.email}</a>
+            </li>
           </ul>
         </div>
         <div className="form-card card" data-reveal>
-          {status === 'success' ? (
+          {status === 'mailapp' ? (
+            <div className="flex flex-col items-center text-center gap-4 py-10" role="status">
+              <span className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: 'var(--accent)', color: 'var(--bg)' }}><i className="ri-mail-send-line text-2xl" /></span>
+              <p className="text-lg">Your email app has opened with your message. Press <strong>Send</strong> to deliver it.</p>
+              <p className="text-sm" style={{ color: 'var(--muted)' }}>If nothing opened, write to us at <a className="underline break-all" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> or call <a className="underline" href={CONTACT.phones[0].href}>{CONTACT.phones[0].label}</a>.</p>
+              <button type="button" className="btn btn-ghost" onClick={() => setStatus('idle')}>Back to the form</button>
+            </div>
+          ) : status === 'success' ? (
             <div className="flex flex-col items-center text-center gap-4 py-10" role="status">
               <span className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: 'var(--accent)', color: 'var(--bg)' }}><i className="ri-check-line text-2xl" /></span>
               <p className="text-lg">Thank you. Your message has been received. Our team will be in touch.</p>
               <button type="button" className="btn btn-ghost" onClick={() => setStatus('idle')}>Send another message</button>
             </div>
           ) : (
-            <form id="ndrs-contact" data-readdy-form onSubmit={onSubmit} className="flex flex-col gap-4" noValidate={false}>
+            <form id="ndrs-contact" onSubmit={onSubmit} className="flex flex-col gap-4" noValidate={false}>
               <p className="text-xs" style={{ color: 'var(--muted)' }}>Please do not submit sensitive medical, immigration, or financial documents through this form.</p>
               <input className="fld-aux" type="text" name="website_alt" tabIndex={-1} autoComplete="off" aria-hidden="true" readOnly onFocus={(e) => e.currentTarget.removeAttribute('readonly')} />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

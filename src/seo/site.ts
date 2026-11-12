@@ -3,8 +3,8 @@
  *
  * CONTENT: confirm with client before launch.
  * - SITE_URL is the public domain used in canonicals, Open Graph URLs and the sitemap.
- * - No email, telephone, address or social accounts are declared because none have
- *   been supplied by NDRS. Add them here only once they are confirmed.
+ * - Email, telephones and address (supplied by NDRS, 11 Nov 2026) live in src/lib/contact.ts
+ *   and in the Organization structured data in index.html. No social accounts yet.
  */
 export const SITE_URL = 'https://nnayadivinereachservices.com';
 
