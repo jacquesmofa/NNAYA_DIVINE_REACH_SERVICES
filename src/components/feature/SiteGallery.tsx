@@ -8,7 +8,7 @@ import gallery from '../../content/gallery.json';
  * gallery matches this site. Full-screen viewer: arrows, swipe, Escape.
  */
 type Photo = { src: string; alt?: string };
-type Album = { slug: string; title: string; description: string; alt: string; photos: Photo[] };
+type Album = { slug: string; title: string; description: string; alt: string; photos: Photo[]; title_fr?: string; description_fr?: string; alt_fr?: string };
 export type GalleryTheme = {
   layout: 'masonry' | 'grid' | 'editorial' | 'strip';
   ink: string; // text colour
@@ -30,12 +30,19 @@ export const sized = (url: string, w: number) =>
 
 export const galleryAlbums = albums;
 
-export default function SiteGallery({ theme, note }: { theme: GalleryTheme; note?: string }) {
+const LABELS = {
+  en: { photos: 'photos', open: 'Open photo', of: 'of', close: 'Close', prev: 'Previous photo', next: 'Next photo', albums: 'Albums', photo: 'photo' },
+  fr: { photos: 'photos', open: 'Ouvrir la photo', of: 'sur', close: 'Fermer', prev: 'Photo précédente', next: 'Photo suivante', albums: 'Albums', photo: 'photo' },
+};
+
+export default function SiteGallery({ theme, note, lang = 'en' }: { theme: GalleryTheme; note?: string; lang?: 'en' | 'fr' }) {
+  const L = LABELS[lang];
+  const tr = (a: Album, k: 'title' | 'description' | 'alt') => (lang === 'fr' && a[`${k}_fr` as const]) || a[k];
   const [albumIndex, setAlbumIndex] = useState(0);
   const [open, setOpen] = useState<number | null>(null);
   const album = albums[albumIndex];
   const total = album.photos.length;
-  const alt = (i: number) => album.photos[i].alt || `${album.alt}, photo ${i + 1}`;
+  const alt = (i: number) => album.photos[i].alt || `${tr(album, 'alt')}, ${L.photo} ${i + 1}`;
 
   const close = useCallback(() => setOpen(null), []);
   const next = useCallback(() => setOpen((i) => (i === null ? i : (i + 1) % total)), [total]);
@@ -66,7 +73,7 @@ export default function SiteGallery({ theme, note }: { theme: GalleryTheme; note
       onClick={() => setOpen(i)}
       className={`group block w-full overflow-hidden cursor-zoom-in focus:outline-none focus-visible:ring-4 ${cls}`}
       style={{ ...r, ['--tw-ring-color' as string]: theme.accent }}
-      aria-label={`Open photo ${i + 1} of ${total}`}
+      aria-label={`${L.open} ${i + 1} ${L.of} ${total}`}
     >
       <img
         src={sized(p.src, w)}
@@ -80,7 +87,7 @@ export default function SiteGallery({ theme, note }: { theme: GalleryTheme; note
   return (
     <div>
       {albums.length > 1 && (
-        <div className="flex flex-wrap justify-center gap-2 mb-10" role="tablist" aria-label="Albums">
+        <div className="flex flex-wrap justify-center gap-2 mb-10" role="tablist" aria-label={L.albums}>
           {albums.map((a, i) => (
             <button
               key={a.slug}
@@ -94,16 +101,16 @@ export default function SiteGallery({ theme, note }: { theme: GalleryTheme; note
                   : { background: theme.tabBg, color: theme.ink, borderRadius: '999px' }
               }
             >
-              {a.title} <span style={{ opacity: 0.6 }}>· {a.photos.length}</span>
+              {tr(a, 'title')} <span style={{ opacity: 0.6 }}>· {a.photos.length}</span>
             </button>
           ))}
         </div>
       )}
 
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <h2 className={`text-3xl md:text-4xl font-bold ${theme.headingClass || ''}`} style={{ color: theme.ink }}>{album.title}</h2>
-        <p className="mt-3 text-lg" style={{ color: theme.muted }}>{album.description}</p>
-        <p className="mt-2 text-sm uppercase tracking-widest font-semibold" style={{ color: theme.accent }}>{total} photos</p>
+        <h2 className={`text-3xl md:text-4xl font-bold ${theme.headingClass || ''}`} style={{ color: theme.ink }}>{tr(album, 'title')}</h2>
+        <p className="mt-3 text-lg" style={{ color: theme.muted }}>{tr(album, 'description')}</p>
+        <p className="mt-2 text-sm uppercase tracking-widest font-semibold" style={{ color: theme.accent }}>{total} {L.photos}</p>
       </div>
 
       {theme.layout === 'masonry' && (
@@ -137,7 +144,7 @@ export default function SiteGallery({ theme, note }: { theme: GalleryTheme; note
           style={{ background: 'rgba(8,8,10,0.94)' }}
           role="dialog"
           aria-modal="true"
-          aria-label={`${album.title}, photo ${open + 1} of ${total}`}
+          aria-label={`${tr(album, 'title')}, ${L.photo} ${open + 1} ${L.of} ${total}`}
           onClick={close}
           onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
           onTouchEnd={(e) => {
@@ -155,9 +162,9 @@ export default function SiteGallery({ theme, note }: { theme: GalleryTheme; note
             onClick={(e) => e.stopPropagation()}
           />
           {[
-            { label: 'Close', icon: '✕', cls: 'top-4 right-4', fn: close },
-            { label: 'Previous photo', icon: '‹', cls: 'left-2 md:left-6 top-1/2 -translate-y-1/2', fn: prev },
-            { label: 'Next photo', icon: '›', cls: 'right-2 md:right-6 top-1/2 -translate-y-1/2', fn: next },
+            { label: L.close, icon: '✕', cls: 'top-4 right-4', fn: close },
+            { label: L.prev, icon: '‹', cls: 'left-2 md:left-6 top-1/2 -translate-y-1/2', fn: prev },
+            { label: L.next, icon: '›', cls: 'right-2 md:right-6 top-1/2 -translate-y-1/2', fn: next },
           ].map((b) => (
             <button
               key={b.label}
