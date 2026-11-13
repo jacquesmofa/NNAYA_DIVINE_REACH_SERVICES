@@ -6,7 +6,6 @@ export const CONTACT = {
   email: 'nnayadivinereachservices@gmail.com',
   phones: [
     { label: '(647) 657-8716', href: 'tel:+16476578716', note: '' },
-    { label: '0803 061 5142', href: 'tel:+2348030615142', note: 'Nigeria' },
   ],
   address: {
     street: '101 West Drive, Unit 7',

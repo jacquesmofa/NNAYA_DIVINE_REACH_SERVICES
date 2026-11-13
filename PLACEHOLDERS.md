@@ -9,7 +9,7 @@
 - [ ] Hero cover image is still hosted on static.readdy.ai (`FilmChapter.tsx`): move it to Cloudinary or the repo.
 
 ## Contact details (11 Nov 2026, from the client)
-- [x] Email nnayadivinereachservices@gmail.com, phones (647) 657-8716 and 0803 061 5142 (Nigeria), address 101 West Drive, Unit 7, Brampton, ON L6T 2J6: in `src/lib/contact.ts`, used in the contact section, footer, phone menu, donate section and Google structured data.
+- [x] Email nnayadivinereachservices@gmail.com, phone (647) 657-8716 (Canadian organisation: the Nigerian number was removed 13 Nov 2026), address 101 West Drive, Unit 7, Brampton, ON L6T 2J6: in `src/lib/contact.ts`, used in the contact section, footer, phone menu, donate section and Google structured data.
 - [x] Web3Forms key for nnayadivinereachservices@gmail.com added 12 Nov 2026 (`WEB3FORMS_KEY` in `src/lib/contact.ts`): the contact form sends straight to that inbox.
 - [ ] Office hours, social media links, registered charity number and tax-receipt details: removed from view until confirmed (they showed as "[to be added]").
 - [ ] Online donation link: the Donate button opens an email to NDRS until a donation page exists.
