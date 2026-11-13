@@ -7,6 +7,7 @@ import FilmChapter from './components/FilmChapter';
 import Panels from './components/Panels';
 import FoodSecurity from './components/FoodSecurity';
 import ContactPanel from './components/ContactPanel';
+import GallerySection from './components/GallerySection';
 import SiteFooter from './components/SiteFooter';
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
         <FilmChapter />
         <Panels />
         <FoodSecurity />
+        <GallerySection />
         <ContactPanel />
       </main>
       <SiteFooter />

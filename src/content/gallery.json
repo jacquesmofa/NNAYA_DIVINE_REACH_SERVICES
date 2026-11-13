@@ -1,0 +1,48 @@
+{
+  "albums": [
+    {
+      "slug": "food-drive",
+      "title": "Community Food Drive",
+      "description": "Fresh produce, volunteers and the community food drive in Brampton.",
+      "alt": "NDRS food drive in Brampton",
+      "photos": [
+        {
+          "src": "https://res.cloudinary.com/hxhakwbe/image/upload/v1794348731/WhatsApp_Image_2026-11-08_at_19.01.58_nfmudk.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/hxhakwbe/image/upload/v1794348731/WhatsApp_Image_2026-11-08_at_19.01.58_3_pcgfoy.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/hxhakwbe/image/upload/v1794348731/WhatsApp_Image_2026-11-08_at_19.01.58_2_omap8j.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/hxhakwbe/image/upload/v1794348730/WhatsApp_Image_2026-11-08_at_19.01.58_1_nagkc4.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/hxhakwbe/image/upload/v1794348730/WhatsApp_Image_2026-11-08_at_19.01.57_nxzlbi.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/hxhakwbe/image/upload/v1793799588/WhatsApp_Image_2026-11-04_at_00.28.52_yyo1sr.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/hxhakwbe/image/upload/v1793799587/WhatsApp_Image_2026-11-04_at_00.28.52_8_f3qhop.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/hxhakwbe/image/upload/v1793799587/WhatsApp_Image_2026-11-04_at_00.28.52_7_amirwq.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/hxhakwbe/image/upload/v1793799586/WhatsApp_Image_2026-11-04_at_00.28.52_6_k6r130.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/hxhakwbe/image/upload/v1793799584/WhatsApp_Image_2026-11-04_at_00.28.52_4_qgqy4c.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/hxhakwbe/image/upload/v1793799584/WhatsApp_Image_2026-11-04_at_00.28.52_3_v4isw2.jpg"
+        },
+        {
+          "src": "https://res.cloudinary.com/hxhakwbe/image/upload/v1793799583/WhatsApp_Image_2026-11-04_at_00.28.52_2_exsl1u.jpg"
+        }
+      ]
+    }
+  ]
+}

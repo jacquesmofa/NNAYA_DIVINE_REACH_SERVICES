@@ -6,6 +6,7 @@ const links = [
   { label: 'Heritage', href: '#heritage', progress: '.2857' },
   { label: 'Programs', href: '#programs', progress: '.5714' },
   { label: 'Igbo Roots', href: '#igbo-roots' },
+  { label: 'Gallery', href: '#gallery' },
   { label: 'Get Involved', href: '#involved' },
   { label: 'Contact', href: '#contact' },
 ];
