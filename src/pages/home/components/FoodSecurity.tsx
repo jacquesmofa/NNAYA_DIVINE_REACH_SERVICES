@@ -1,4 +1,4 @@
-// NDRS Food Security: the home-page case for funders and partners (real photos from the NDRS food drive).
+// NDRS Food Security: the home-page case for donors and partners (real photos from the NDRS food drive).
 const C = 'https://res.cloudinary.com/hxhakwbe/image/upload/';
 const img = (path: string, w: number, h: number) => `${C}f_auto,q_auto,c_fill,g_auto,w_${w},h_${h}/${path}`;
 
@@ -26,7 +26,7 @@ const fund = [
 
 const promises = [
   'Regular updates on people served and food shared',
-  'Photos and stories from the programs you fund',
+  'Photos and stories from the programs you support',
   'Financial reporting and receipts on request',
   'Recognition at NDRS events and on our channels',
 ];
@@ -36,7 +36,7 @@ export default function FoodSecurity() {
     <section className="food" id="food-security" aria-labelledby="food-title">
       <div className="food-inner">
         <header className="food-head" data-reveal>
-          <p className="stamp">04b — Food security · For funders &amp; partners</p>
+          <p className="stamp">04b — Food security · For donors &amp; partners</p>
           <h2 id="food-title">No neighbour should face <em className="accent">an empty plate.</em></h2>
           <p className="sub">Through our food drive and community hot lunches, Nnaya Divine Reach Services puts fresh, nourishing food into the hands of youth, seniors, families and newcomers in Brampton. Food is where trust begins: it is how people first walk through our doors, and how we connect them to everything that helps them move forward.</p>
         </header>
@@ -59,13 +59,13 @@ export default function FoodSecurity() {
             </ul>
           </div>
           <aside className="food-card" data-reveal>
-            <h3 className="food-h3">Your grant, at work</h3>
+            <h3 className="food-h3">Your donation, at work</h3>
             <ul className="food-list">{fund.map((f) => <li key={f}>{f}</li>)}</ul>
-            <h3 className="food-h3 mt">What funders receive</h3>
+            <h3 className="food-h3 mt">What donors receive</h3>
             <ul className="food-list food-list--check">{promises.map((p) => <li key={p}>{p}</li>)}</ul>
             <div className="flex flex-wrap gap-3 mt-6">
-              <a className="btn btn-accent" href="#contact">Fund the food drive <i className="ri-arrow-right-line" /></a>
-              <a className="btn btn-ghost" href="#contact">Request a funding package</a>
+              <a className="btn btn-accent" href="#contact">Donate to the food drive <i className="ri-arrow-right-line" /></a>
+              <a className="btn btn-ghost" href="#contact">Request a donor package</a>
             </div>
           </aside>
         </div>
