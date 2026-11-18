@@ -40,3 +40,6 @@ Brampton not-for-profit supporting youth, seniors, families and newcomers with f
 - Some forms post to Readdy's form service (`readdy.ai/api/form`). Move them to Web3Forms with the client's email (studio standard) and test that a message actually arrives.
 - Real photos exist in the repo's `Images/` folder (9 files): use them before any stock photo.
 - Design overlap with other clients: Same font stack as Crowned and ACCAH (same Readdy template). Must diverge.
+
+## Gallery videos (18 Nov 2026)
+- An album in `src/content/gallery.json` can have `videos: [{ src, title, title_fr? }]`: short clips stored on Cloudinary (the .mp4 address). They play above the photos with a cover picture taken from the clip and load only when pressed. Photos can carry `alt` and `alt_fr`. `SiteGallery.tsx` is shared with Crowned Women: keep both copies identical.

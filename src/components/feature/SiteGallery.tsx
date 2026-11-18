@@ -3,12 +3,14 @@ import gallery from '../../content/gallery.json';
 
 /*
  * Photo gallery: albums come from src/content/gallery.json.
- * Each album: { slug, title, description, alt, photos: [{ src, alt? }] }.
+ * Each album: { slug, title, description, alt, photos: [{ src, alt? }], videos?: [{ src, title }] }.
+ * Videos are short clips stored on Cloudinary (the .mp4 address); they play above the photos.
  * The look (colours, layout) is set once in the `theme` below so the
  * gallery matches this site. Full-screen viewer: arrows, swipe, Escape.
  */
-type Photo = { src: string; alt?: string };
-type Album = { slug: string; title: string; description: string; alt: string; photos: Photo[]; title_fr?: string; description_fr?: string; alt_fr?: string };
+type Photo = { src: string; alt?: string; alt_fr?: string };
+type Clip = { src: string; title: string; title_fr?: string };
+type Album = { slug: string; title: string; description: string; alt: string; photos: Photo[]; videos?: Clip[]; title_fr?: string; description_fr?: string; alt_fr?: string };
 export type GalleryTheme = {
   layout: 'masonry' | 'grid' | 'editorial' | 'strip';
   ink: string; // text colour
@@ -28,11 +30,15 @@ export const sized = (url: string, w: number) =>
     ? url.replace('/upload/', `/upload/c_limit,w_${w},q_auto,f_auto/`)
     : url;
 
+/** Cloudinary video: light, browser-friendly file and a cover picture taken from the clip. */
+const clipSrc = (url: string) => url.replace('/video/upload/', '/video/upload/q_auto,vc_auto/');
+const clipPoster = (url: string) => url.replace('/video/upload/', '/video/upload/so_2,w_640,c_limit,q_auto,f_jpg/').replace(/\.(mp4|mov|webm)$/i, '.jpg');
+
 export const galleryAlbums = albums;
 
 const LABELS = {
-  en: { photos: 'photos', open: 'Open photo', of: 'of', close: 'Close', prev: 'Previous photo', next: 'Next photo', albums: 'Albums', photo: 'photo' },
-  fr: { photos: 'photos', open: 'Ouvrir la photo', of: 'sur', close: 'Fermer', prev: 'Photo précédente', next: 'Photo suivante', albums: 'Albums', photo: 'photo' },
+  en: { photos: 'photos', open: 'Open photo', of: 'of', close: 'Close', prev: 'Previous photo', next: 'Next photo', albums: 'Albums', photo: 'photo', video: 'video', videos: 'videos' },
+  fr: { photos: 'photos', open: 'Ouvrir la photo', of: 'sur', close: 'Fermer', prev: 'Photo précédente', next: 'Photo suivante', albums: 'Albums', photo: 'photo', video: 'vidéo', videos: 'vidéos' },
 };
 
 export default function SiteGallery({ theme, note, lang = 'en' }: { theme: GalleryTheme; note?: string; lang?: 'en' | 'fr' }) {
@@ -42,7 +48,7 @@ export default function SiteGallery({ theme, note, lang = 'en' }: { theme: Galle
   const [open, setOpen] = useState<number | null>(null);
   const album = albums[albumIndex];
   const total = album.photos.length;
-  const alt = (i: number) => album.photos[i].alt || `${tr(album, 'alt')}, ${L.photo} ${i + 1}`;
+  const alt = (i: number) => (lang === 'fr' && album.photos[i].alt_fr) || album.photos[i].alt || `${tr(album, 'alt')}, ${L.photo} ${i + 1}`;
 
   const close = useCallback(() => setOpen(null), []);
   const next = useCallback(() => setOpen((i) => (i === null ? i : (i + 1) % total)), [total]);
@@ -110,8 +116,34 @@ export default function SiteGallery({ theme, note, lang = 'en' }: { theme: Galle
       <div className="text-center max-w-2xl mx-auto mb-10">
         <h2 className={`text-3xl md:text-4xl font-bold ${theme.headingClass || ''}`} style={{ color: theme.ink }}>{tr(album, 'title')}</h2>
         <p className="mt-3 text-lg" style={{ color: theme.muted }}>{tr(album, 'description')}</p>
-        <p className="mt-2 text-sm uppercase tracking-widest font-semibold" style={{ color: theme.accent }}>{total} {L.photos}</p>
+        <p className="mt-2 text-sm uppercase tracking-widest font-semibold" style={{ color: theme.accent }}>
+          {total} {L.photos}
+          {album.videos?.length ? ` · ${album.videos.length} ${album.videos.length > 1 ? L.videos : L.video}` : ''}
+        </p>
       </div>
+
+      {album.videos && album.videos.length > 0 && (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
+          {album.videos.map((v) => {
+            const label = (lang === 'fr' && v.title_fr) || v.title;
+            return (
+              <figure key={v.src} className="m-0">
+                <video
+                  className="w-full aspect-[9/16] object-contain bg-black"
+                  style={{ borderRadius: theme.radius }}
+                  src={clipSrc(v.src)}
+                  poster={clipPoster(v.src)}
+                  controls
+                  playsInline
+                  preload="none"
+                  aria-label={label}
+                />
+                <figcaption className="mt-2 text-sm" style={{ color: theme.muted }}>{label}</figcaption>
+              </figure>
+            );
+          })}
+        </div>
+      )}
 
       {theme.layout === 'masonry' && (
         <div className="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4">

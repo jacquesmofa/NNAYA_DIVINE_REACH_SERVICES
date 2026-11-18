@@ -1,6 +1,84 @@
 {
   "albums": [
     {
+      "slug": "food-hampers-november-2026",
+      "title": "Food Hamper Packing, November 2026",
+      "description": "Volunteers packing food hampers with fresh produce, juice, cereal and baked goods for families in our community.",
+      "alt": "NDRS volunteers packing food hampers, November 2026",
+      "videos": [
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/video/upload/v1795002688/WhatsApp_Video_2026-11-17_at_22.05.38.mp4",
+          "title": "Packing the hampers"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/video/upload/v1795002682/WhatsApp_Video_2026-11-17_at_22.08.00.mp4",
+          "title": "On the packing floor"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/video/upload/v1795002679/WhatsApp_Video_2026-11-17_at_23.02.02.mp4",
+          "title": "Loading the truck"
+        }
+      ],
+      "photos": [
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002678/WhatsApp_Image_2026-11-17_at_22.04.09.jpg",
+          "alt": "A volunteer carries a box across the warehouse"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002677/WhatsApp_Image_2026-11-17_at_22.04.09_3.jpg",
+          "alt": "A volunteer lifts a box to pack a hamper"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002676/WhatsApp_Image_2026-11-17_at_22.09.39.jpg",
+          "alt": "Volunteers fill crates with juice, cereal and fresh produce"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002676/WhatsApp_Image_2026-11-17_at_22.09.39_1.jpg",
+          "alt": "Hamper crates being filled at the packing table"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002675/WhatsApp_Image_2026-11-17_at_22.09.39_2.jpg",
+          "alt": "A volunteer packs a crate of groceries"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002675/WhatsApp_Image_2026-11-17_at_22.09.40.jpg",
+          "alt": "A volunteer in gloves packs crates with juice and cereal"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002675/WhatsApp_Image_2026-11-17_at_22.09.39_4.jpg",
+          "alt": "Two volunteers packing hamper crates side by side"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002675/WhatsApp_Image_2026-11-17_at_22.09.39_3.jpg",
+          "alt": "Crates of carrots and fresh produce ready to be shared"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002675/WhatsApp_Image_2026-11-17_at_22.09.40_2.jpg",
+          "alt": "A volunteer beside crates of juice bottles"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002674/WhatsApp_Image_2026-11-17_at_22.09.40_1.jpg",
+          "alt": "Volunteers at work around the packing table"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002674/WhatsApp_Image_2026-11-17_at_22.09.40_4.jpg",
+          "alt": "A crate filled with groceries for one family"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002673/WhatsApp_Image_2026-11-17_at_22.09.40_6.jpg",
+          "alt": "A hamper crate with waffles, cereal, bread and snacks"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002673/WhatsApp_Image_2026-11-17_at_22.09.40_5.jpg",
+          "alt": "Crates of packaged food lined up for families"
+        },
+        {
+          "src": "https://res.cloudinary.com/jvzdt4ob/image/upload/v1795002673/WhatsApp_Image_2026-11-17_at_23.27.12.jpg",
+          "alt": "Finished hampers on the warehouse floor"
+        }
+      ]
+    },
+    {
       "slug": "food-drive",
       "title": "Community Food Drive",
       "description": "Fresh produce, volunteers and the community food drive in Brampton.",
